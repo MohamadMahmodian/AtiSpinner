@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="my_spinner_text_color">#404547</color>
+
+    <color name="drovercolour">#6E6E6D</color>
+    <color name="category_textcolour">#404547</color>
+    <color name="divider">#677174</color>
+    <color name="droverbackground">#29363b</color>
+    <color name="droverbackground1">#354348</color>
+
+
+
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#3498db</color>
+    <color name="colorAccent">#ea495f</color>
+
+
+    <color name="textSub">#76818a</color>
+    <color name="Tex">#404547</color>
+    <color name="White">#fff</color>
+
+    <color name="txt_newUI">#dc5a5a5a</color>
+    <color name="background_newUI">#1f80a7b0</color>
+    <color name="toolbar_newUI">#3498db</color>
+    <color name="border_lstview">#FFCDD2</color>
+    <color name="txt_allStudent_class">#c1f06292</color>
+    <color name="date_border">#18FFFF</color>
+    <color name="backBlue_wizard">#0288D1</color>
+
+
+    <color name="colordevider">#f1f2f4</color>
+    <color name="colorbutton">#ff5254</color>
+    <color name="iconcolour">#9ba4ab</color>
+    <color name="strok">#e4e5ea</color>
+
+    <color name="global_color_primary_light">#f5f5f5</color>
+    <color name="global_color_green_primary">#4caf50</color>
+    <color name="global_color_green_primary_light">#c8e6c9</color>
+    <color name="global_color_green_primary_dark">#388e3c</color>
+    <color name="global_color_green_accent">#ffc107</color>
+    <color name="global_color_green_control_activated">#ffc107</color>
+
+    <color name="green">#5ccc78</color>
+    <color name="red">#ea495f</color>
+    <color name="yellow">#f8d64e</color>
+    <color name="light_green">#1bac94</color>
+
+    <color name="colortext">#100b20</color>
+    <color name="colorhint">#a9aaac</color>
+
+    <color name="cattextcolour">#FFFFFF</color>
+    <color name="white">#FFFF</color>
+
+    <color name="mdtp_accent_color">#16AFE1</color>
+    <color name="mdtp_accent_color_dark">#0A85AD</color>
+
+
+
+
+    <color name="header_normal">#ffe74c3c</color>
+    <color name="header_pressed">#ffc0392b</color>
+    <color name="menu_section_header">#FFDDDDDD</color>
+
+    <color name="grey">#dadada</color>
+</resources>
