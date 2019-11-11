@@ -23,8 +23,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //TextView nomrehExam = (TextView) findViewById(R.id.j);
-
 
         List<Model_ListDialogTemplate> List = new ArrayList<>();
         List.add(new Model_ListDialogTemplate("11", "1", "546"));
