@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 import com.example.ati_spinner_mohamad.ListDialogTemplate;
 import com.example.ati_spinner_mohamad.Model_ListDialogTemplate;
-import com.example.ati_spinner_mohamad.aab;
+
 
 import java.util.ArrayList;
 import java.util.List;
