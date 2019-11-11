@@ -36,13 +36,13 @@ public class MainActivity extends AppCompatActivity {
         List.add(new Model_ListDialogTemplate("77", "7", "564"));
         List.add(new Model_ListDialogTemplate("88", "8", "564"));
 
-        new ListDialogTemplate(MainActivity.this, List, true, false, false) {
+        new ListDialogTemplate(MainActivity.this, List, true, false, true) {
 
             @Override
             public void onCreateing() {
                 super.onCreateing();
                 this.setTitle = "گزینه هارا انتخاب کنید";
-                //this.setDescription = "Description";
+                this.setDescription = "Description";
                 //this.List_View.getLayoutParams().height = 150;
             }
 
@@ -53,17 +53,17 @@ public class MainActivity extends AppCompatActivity {
                 switch (Tag) {
 
                     case "OK":
-                        this.myDialog.dismiss();
+                        //this.myDialog.dismiss();
                         Toast.makeText(v.getContext(), "OK", Toast.LENGTH_SHORT).show();
                         break;
 
                     case "CANCEL":
-                        this.myDialog.dismiss();
+                        //this.myDialog.dismiss();
                         Toast.makeText(v.getContext(), "CANCEL", Toast.LENGTH_SHORT).show();
                         break;
 
                     case "ToolbarBack":
-                        this.myDialog.dismiss();
+                        //this.myDialog.dismiss();
                         Toast.makeText(v.getContext(), "ToolbarBack", Toast.LENGTH_SHORT).show();
                         break;
                 }
