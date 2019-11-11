@@ -25,14 +25,14 @@ public class MainActivity extends AppCompatActivity {
 
 
         List<Model_ListDialogTemplate> List = new ArrayList<>();
-        List.add(new Model_ListDialogTemplate("11", "1", "546"));
-        List.add(new Model_ListDialogTemplate("22", "2", "ی453ک"));
-        List.add(new Model_ListDialogTemplate("33", "3", "564"));
-        List.add(new Model_ListDialogTemplate("44", "4", "564"));
-        List.add(new Model_ListDialogTemplate("55", "5", "564"));
-        List.add(new Model_ListDialogTemplate("66", "6", "564"));
-        List.add(new Model_ListDialogTemplate("77", "7", "564"));
-        List.add(new Model_ListDialogTemplate("88", "8", "564"));
+        List.add(new Model_ListDialogTemplate("11", "محمد محمودیان", "111"));
+        List.add(new Model_ListDialogTemplate("22", "حسن شصتی", "222"));
+        List.add(new Model_ListDialogTemplate("33", "سید محمد حسینی", "333"));
+        List.add(new Model_ListDialogTemplate("44", "حسین معافی", "444"));
+        List.add(new Model_ListDialogTemplate("55", "امین تاجیک", "555"));
+        List.add(new Model_ListDialogTemplate("66", "حمید حیدری", "666"));
+        List.add(new Model_ListDialogTemplate("77", "علی فرهادی", "777"));
+        List.add(new Model_ListDialogTemplate("88", "رضا نادری", "888"));
 
         new ListDialogTemplate(MainActivity.this, List, true, false, true) {
 
@@ -40,8 +40,8 @@ public class MainActivity extends AppCompatActivity {
             public void onCreateing() {
                 super.onCreateing();
                 this.setTitle = "گزینه هارا انتخاب کنید";
-                this.setDescription = "Description";
-                //this.List_View.getLayoutParams().height = 150;
+                this.setDescription = "توضیحاتی در باره گزینه ها";
+                this.List_View.getLayoutParams().height = 400;
             }
 
             @Override
@@ -51,17 +51,15 @@ public class MainActivity extends AppCompatActivity {
                 switch (Tag) {
 
                     case "OK":
-                        //this.myDialog.dismiss();
                         Toast.makeText(v.getContext(), "OK", Toast.LENGTH_SHORT).show();
                         break;
 
                     case "CANCEL":
-                        //this.myDialog.dismiss();
+                        this.myDialog.dismiss();
                         Toast.makeText(v.getContext(), "CANCEL", Toast.LENGTH_SHORT).show();
                         break;
 
                     case "ToolbarBack":
-                        //this.myDialog.dismiss();
                         Toast.makeText(v.getContext(), "ToolbarBack", Toast.LENGTH_SHORT).show();
                         break;
                 }
@@ -70,8 +68,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 super.onItemClick(parent, view, position, id);
-                //Toast.makeText(v.getContext(), String.valueOf(position), Toast.LENGTH_SHORT).show();
-
                 int x = this.ListSelected.size();
             }
 
