@@ -1,10 +1,12 @@
 package com.example.ati_spinner_mohamad;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.speech.RecognizerIntent;
@@ -25,13 +27,13 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import java.util.ArrayList;
 
-public abstract class ListDialogTemplate implements View.OnClickListener, AdapterView.OnItemClickListener {
+public abstract class SmartSpiner implements View.OnClickListener, AdapterView.OnItemClickListener {
 
     private Activity myActivity;
     private Context myContext;
-    private java.util.List<Model_ListDialogTemplate> List;
+    private java.util.List<Model_SmartSpiner> List;
 
-    private Adapter_ListDialogTemplate Adapter;
+    private Adapter_SmartSpiner Adapter;
     private int REQ_CODE_SPEECH_INPUT = 100;
     private ImageView img_voiceSearch;
     private ConstraintLayout consSearch;
@@ -52,10 +54,17 @@ public abstract class ListDialogTemplate implements View.OnClickListener, Adapte
     public boolean isCheckBox;
     public boolean isButton;
     public boolean MultiSelect;
+    public boolean RowNumber;
 
-    public java.util.List<Model_ListDialogTemplate> ListSelected = new ArrayList<>();
+    public int BorderColors = R.color.toolbar_newUI;
+    public int ToolbarColors = R.color.toolbar_newUI;
+    public int ItemColors = R.color.toolbar_newUI;
+    public int CheckBoxColors = R.color.toolbar_newUI;
 
-    public ListDialogTemplate(Activity activity, java.util.List<Model_ListDialogTemplate> list, Boolean CheckBox, boolean Multiselect, Boolean Button) {
+
+    public java.util.List<Model_SmartSpiner> ListSelected = new ArrayList<>();
+
+    public SmartSpiner(Activity activity, java.util.List<Model_SmartSpiner> list, Boolean CheckBox, boolean Multiselect,Boolean rowNumber, Boolean Button) {
 
         myActivity = activity;
         myContext = myActivity.getApplicationContext();
@@ -66,6 +75,7 @@ public abstract class ListDialogTemplate implements View.OnClickListener, Adapte
         isCheckBox =CheckBox;
         isButton = Button;
         MultiSelect = Multiselect;
+        RowNumber = rowNumber;
 
         myDialog = new Dialog(myActivity);
         myDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -93,9 +103,13 @@ public abstract class ListDialogTemplate implements View.OnClickListener, Adapte
         if(!isButton)
             cardView4.setVisibility(View.GONE);
 
+        //<editor-fold desc="Ser Colors">
+        ((CardView) myDialog.findViewById(R.id.border)).setCardBackgroundColor(myActivity.getResources().getColor(BorderColors,null));
+        ((ConstraintLayout) myDialog.findViewById(R.id.toolbar)).setBackgroundColor(myActivity.getResources().getColor(ToolbarColors,null));
+        ((ConstraintLayout) myDialog.findViewById(R.id.search_panel_back)).setBackgroundColor(myActivity.getResources().getColor(ToolbarColors,null));
+        //</editor-fold>
 
-
-        Adapter = new Adapter_ListDialogTemplate(myContext, R.layout.listdilaogtempalte_item, List,isCheckBox,MultiSelect);
+        Adapter = new Adapter_SmartSpiner(myContext, R.layout.listdilaogtempalte_item, List,isCheckBox,MultiSelect,RowNumber,ItemColors,CheckBoxColors);
         List_View.setAdapter(Adapter);
         List_View.setOnItemClickListener(this);
 
@@ -107,6 +121,7 @@ public abstract class ListDialogTemplate implements View.OnClickListener, Adapte
 
         toolbar_back.setTag("ToolbarBack");
         toolbar_back.setOnClickListener(this);
+
 
 
 

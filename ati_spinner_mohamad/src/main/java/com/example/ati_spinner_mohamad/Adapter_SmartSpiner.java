@@ -1,6 +1,7 @@
 package com.example.ati_spinner_mohamad;
 
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 //import android.support.constraint.ConstraintLayout;
 import android.view.LayoutInflater;
@@ -12,24 +13,29 @@ import android.widget.CompoundButton;
 import android.widget.Filter;
 import android.widget.TextView;
 
+import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import java.util.ArrayList;
 
 
-public class Adapter_ListDialogTemplate extends ArrayAdapter<Model_ListDialogTemplate>
+public class Adapter_SmartSpiner extends ArrayAdapter<Model_SmartSpiner>
 {
 
-    java.util.List<Model_ListDialogTemplate> List;
-    java.util.List<Model_ListDialogTemplate> List_Copy;
-    boolean MultiSelect,ShowCheckBox;
+    java.util.List<Model_SmartSpiner> List;
+    java.util.List<Model_SmartSpiner> List_Copy;
+    boolean MultiSelect,ShowCheckBox,RowNumber;
+    int Item_Back,CheckBoxColors;
 
-    public Adapter_ListDialogTemplate(Context context, int textViewResourceId, java.util.List<Model_ListDialogTemplate> list, Boolean showCheckBox, Boolean Multiselect) {
+    public Adapter_SmartSpiner(Context context, int textViewResourceId, java.util.List<Model_SmartSpiner> list, Boolean showCheckBox, Boolean Multiselect,Boolean rowNumber,int item_BackgroundColors,int checkBoxColors) {
         super(context, textViewResourceId, list);
         this.List = list;
         this.List_Copy = this.List;
         MultiSelect = Multiselect;
         ShowCheckBox = showCheckBox;
+
+        Item_Back = item_BackgroundColors;
+        RowNumber = rowNumber;
     }
 
 
@@ -37,6 +43,7 @@ public class Adapter_ListDialogTemplate extends ArrayAdapter<Model_ListDialogTem
     public int getCount() {
         return this.List.size();
     }
+
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -46,8 +53,13 @@ public class Adapter_ListDialogTemplate extends ArrayAdapter<Model_ListDialogTem
         v = inflater.inflate(R.layout.listdilaogtempalte_item, null);
 
         TextView txtOptions = (TextView) v.findViewById(R.id.txt_responseOptions);
+        TextView txt_responseOptions_extra = (TextView) v.findViewById(R.id.txt_responseOptions_extra);
         CheckBox checkBox = (CheckBox) v.findViewById(R.id.checkBox_survey);
         ConstraintLayout cons_checkBox = (ConstraintLayout) v.findViewById(R.id.consCheckBox);
+        TextView txt_rownumber = (TextView) v.findViewById(R.id.txt_rownumber);
+        CardView card_rownumber = (CardView) v.findViewById(R.id.card_rownumber);
+
+        ((CardView) v.findViewById(R.id.card_item)).setCardBackgroundColor(getContext().getResources().getColor(Item_Back,null));
 
 
         txtOptions.setText(List.get(position).Name);
@@ -65,9 +77,21 @@ public class Adapter_ListDialogTemplate extends ArrayAdapter<Model_ListDialogTem
             }
         });
 
+        if(!List.get(position).Extra.equals("")) {
+            txt_responseOptions_extra.setText(List.get(position).Extra);
+        }else {
+            txt_responseOptions_extra.setVisibility(View.GONE);
+        }
+
         if(!ShowCheckBox)
             checkBox.setVisibility(View.GONE);
 
+        if(RowNumber) {
+            txt_rownumber.setText(String.valueOf(position));
+            card_rownumber.setCardBackgroundColor(getContext().getResources().getColor(Item_Back,null));
+        }else {
+            card_rownumber.setVisibility(View.GONE);
+        }
 //        cons_checkBox.setTag(position);
 //        cons_checkBox.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -90,7 +114,7 @@ public class Adapter_ListDialogTemplate extends ArrayAdapter<Model_ListDialogTem
             protected FilterResults performFiltering(CharSequence constraint) {
 
                 FilterResults results = new FilterResults();
-                java.util.List<Model_ListDialogTemplate> myArray = new ArrayList<>();
+                java.util.List<Model_SmartSpiner> myArray = new ArrayList<>();
 
                 for (int i = 0; i < List_Copy.size(); i++) {
                     if (constraint.length() > 0) {
@@ -107,7 +131,7 @@ public class Adapter_ListDialogTemplate extends ArrayAdapter<Model_ListDialogTem
             @Override
             protected void publishResults(CharSequence constraint, FilterResults results) {
 
-                List = (ArrayList<Model_ListDialogTemplate>) results.values;
+                List = (ArrayList<Model_SmartSpiner>) results.values;
                 notifyDataSetChanged();
             }
         };

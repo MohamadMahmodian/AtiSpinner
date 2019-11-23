@@ -6,74 +6,127 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:focusable="false"
+
     android:focusableInTouchMode="false">
 
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/card_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        app:cardBackgroundColor="#FFCDD2"
-        app:cardCornerRadius="15dp"
-        app:cardElevation="1dp"
-        app:contentPadding="1dp"
+        android:layout_margin="10dp"
         android:focusable="false"
         android:focusableInTouchMode="false"
+        app:cardBackgroundColor="#FFCDD2"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="1dp"
+        app:contentPadding="1dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.cardview.widget.CardView
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/consCheckBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardBackgroundColor="#FFF"
-            app:cardCornerRadius="15dp"
+            android:background="@drawable/border_2"
             android:focusable="false"
             android:focusableInTouchMode="false">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/consCheckBox"
-                android:layout_width="match_parent"
+            <CheckBox
+                android:id="@+id/checkBox_survey"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_2"
+                android:layout_marginEnd="3dp"
+                android:buttonTint="#2ECC71"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
-                >
+                app:layout_constraintBottom_toBottomOf="@+id/card_rownumber"
+                app:layout_constraintEnd_toStartOf="@+id/card_rownumber"
+                app:layout_constraintTop_toTopOf="@+id/card_rownumber" />
 
-                    <CheckBox
-                        android:id="@+id/checkBox_survey"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="0dp"
-                        android:layout_marginRight="2dp"
-                        android:layout_marginBottom="0dp"
-                        android:buttonTint="#2ECC71"
-                        android:focusable="false"
-                        android:focusableInTouchMode="false"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/txt_responseOptions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:gravity="center_vertical|right"
+                android:text="........"
+                android:textColor="#000"
+                app:layout_constraintBottom_toBottomOf="@+id/checkBox_survey"
+                app:layout_constraintRight_toLeftOf="@+id/checkBox_survey"
+                app:layout_constraintTop_toTopOf="@+id/checkBox_survey" />
 
-                <TextView
-                    android:id="@+id/txt_responseOptions"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="5dp"
+
+            <TextView
+                android:id="@+id/txt_responseOptions_extra"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="0dp"
+                android:layout_marginTop="2dp"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:gravity="center_vertical|right"
+                android:text="........"
+                android:textColor="@color/iconcolour"
+                android:textSize="9dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/txt_responseOptions"
+                app:layout_constraintTop_toBottomOf="@+id/txt_responseOptions" />
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_rownumber"
+                android:layout_width="30dp"
+                android:layout_height="0dp"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                app:cardBackgroundColor="#FFCDD2"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="1dp"
+                app:contentPadding="1dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/consCheckBox111"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/border_2"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
-                    android:gravity="center_vertical|right"
-                    android:text="........"
-                    android:textColor="#000"
-                    app:layout_constraintBottom_toBottomOf="@+id/checkBox_survey"
-                    app:layout_constraintRight_toLeftOf="@+id/checkBox_survey"
-                    app:layout_constraintTop_toTopOf="@+id/checkBox_survey" />
+                    android:gravity="center">
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    <TextView
+                        android:id="@+id/txt_rownumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="2dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginEnd="2dp"
+                        android:layout_marginBottom="2dp"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:text="..."
+                        android:textColor="#000"
+                        app:layout_constraintBottom_toBottomOf="@+id/consCheckBox111"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintRight_toLeftOf="@+id/consCheckBox111"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/consCheckBox111" />
 
-        </androidx.cardview.widget.CardView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     </androidx.cardview.widget.CardView>
 

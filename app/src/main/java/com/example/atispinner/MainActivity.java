@@ -5,16 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.ati_spinner_mohamad.ListDialogTemplate;
-import com.example.ati_spinner_mohamad.Model_ListDialogTemplate;
+import com.example.ati_spinner_mohamad.SmartSpiner;
+import com.example.ati_spinner_mohamad.Model_SmartSpiner;
 
 
 import java.util.ArrayList;
 import java.util.List;
-import com.example.atispinner.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,24 +22,26 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        List<Model_ListDialogTemplate> List = new ArrayList<>();
-        List.add(new Model_ListDialogTemplate("11", "محمد محمودیان", "111"));
-        List.add(new Model_ListDialogTemplate("22", "حسن شصتی", "222"));
-        List.add(new Model_ListDialogTemplate("33", "سید محمد حسینی", "333"));
-        List.add(new Model_ListDialogTemplate("44", "حسین معافی", "444"));
-        List.add(new Model_ListDialogTemplate("55", "امین تاجیک", "555"));
-        List.add(new Model_ListDialogTemplate("66", "حمید حیدری", "666"));
-        List.add(new Model_ListDialogTemplate("77", "علی فرهادی", "777"));
-        List.add(new Model_ListDialogTemplate("88", "رضا نادری", "888"));
+        List<Model_SmartSpiner> List = new ArrayList<>();
+        List.add(new Model_SmartSpiner("11", "محمد محمودیان", "برنامه نویس",false));
+        List.add(new Model_SmartSpiner("22", "حسن شصتی", "برنامه نویس PHP",false));
+        List.add(new Model_SmartSpiner("33", "سید محمد حسینی", "شبکه CCNA",false));
+        List.add(new Model_SmartSpiner("44", "حسین معافی", "برنامه نویس PHP Java",false));
+        List.add(new Model_SmartSpiner("55", "امین تاجیک", "برنامه نویس PHP JavaScript",false));
+        List.add(new Model_SmartSpiner("66", "حمید حیدری", "",false));
+        List.add(new Model_SmartSpiner("77", "علی فرهادی", "",false));
+        List.add(new Model_SmartSpiner("88", "رضا نادری", "طراح",false));
 
-        new ListDialogTemplate(MainActivity.this, List, true, false, true) {
+        new SmartSpiner(MainActivity.this, List, true, false,true, true) {
 
             @Override
             public void onCreateing() {
                 super.onCreateing();
                 this.setTitle = "گزینه هارا انتخاب کنید";
                 this.setDescription = "توضیحاتی در باره گزینه ها";
-                this.List_View.getLayoutParams().height = 400;
+
+                //this.List_View.getLayoutParams().height = 400;
+                //this.BorderColors = R.color.colorAccent;
             }
 
             @Override

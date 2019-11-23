@@ -1,11 +1,20 @@
 package com.example.ati_spinner_mohamad;
 
-public class Model_ListDialogTemplate {
+public class Model_SmartSpiner {
 
     String Id;
     String Name;
     String Extra;
     Boolean Checked = false;
+
+
+
+    public Model_SmartSpiner(String id, String name , String extra, Boolean checked) {
+        Id = id;
+        Name = name;
+        Extra = extra;
+        Checked = checked;
+    }
 
     public Boolean getChecked() {
         return Checked;
@@ -14,13 +23,6 @@ public class Model_ListDialogTemplate {
     public void setChecked(Boolean checked) {
         Checked = checked;
     }
-
-    public Model_ListDialogTemplate(String id, String name , String extra) {
-        Id = id;
-        Name = name;
-        Extra = extra;
-    }
-
 
     public String getId() {
         return Id;
