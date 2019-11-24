@@ -7,8 +7,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Handler;
 import android.speech.RecognizerIntent;
+import android.support.annotation.RequiresApi;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.CardView;
 import android.text.Editable;
@@ -94,6 +96,7 @@ public abstract class SmartSpiner implements View.OnClickListener, AdapterView.O
 
     public void onCreateing(){}
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     public void ShowDialog() {
 
 
@@ -232,7 +235,7 @@ public abstract class SmartSpiner implements View.OnClickListener, AdapterView.O
             @Override
             public void afterTextChanged(Editable s) {
 
-                Adapter.getFilter().filter(MCS.ConverPersian2English(editSearch.getText().toString()));
+                Adapter.getFilter().filter(ConverPersian2English(editSearch.getText().toString()));
             }
         });
 
@@ -242,6 +245,21 @@ public abstract class SmartSpiner implements View.OnClickListener, AdapterView.O
                 promptSpeechInput();
             }
         });
+    }
+
+
+    public String ConverPersian2English(String number){
+        char[] chars = new char[number.length()];
+        for(int i=0;i<number.length();i++) {
+            char ch = number.charAt(i);
+            if (ch >= 0x0660 && ch <= 0x0669)
+                ch -= 0x0660 - '0';
+            else if (ch >= 0x06f0 && ch <= 0x06F9)
+                ch -= 0x06f0 - '0';
+            chars[i] = ch;
+        }
+        return new String(chars);
+
     }
 
 
