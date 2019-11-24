@@ -17,7 +17,7 @@
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="49dp"
-            android:background="@drawable/background_search_panel">
+            android:background="@drawable/_background_search_panel">
 
             <android.support.constraint.ConstraintLayout
                 android:id="@+id/_cons_back"
@@ -39,7 +39,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginBottom="8dp"
-                    android:src="@drawable/back_search_panel"
+                    android:src="@drawable/_back_search_panel"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -63,7 +63,7 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_marginRight="5dp"
-                    android:src="@drawable/icon_voice"
+                    android:src="@drawable/_icon_voice"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -88,7 +88,7 @@
                     android:id="@+id/_imgClearEditSearch"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/icon_delete"
+                    android:src="@drawable/_icon_delete"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
