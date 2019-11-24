@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         List.add(new Model_SmartSpiner("77", "علی فرهادی", "",false));
         List.add(new Model_SmartSpiner("88", "رضا نادری", "طراح",false));
 
-        new SmartSpiner(MainActivity.this, List, true, false,true, true) {
+        new SmartSpiner(MainActivity.this, List, true, false,true,true, true) {
 
             @Override
             public void onCreateing() {
@@ -40,8 +40,10 @@ public class MainActivity extends AppCompatActivity {
                 this.setTitle = "گزینه هارا انتخاب کنید";
                 this.setDescription = "توضیحاتی در باره گزینه ها";
 
+                //this.setCheckBoxColors = R.color.colorAccent;
+                //this.setToolbarColors = R.color.colorAccent;
+                //this.setBorderColors = R.color.colorAccent;
                 //this.List_View.getLayoutParams().height = 400;
-                //this.BorderColors = R.color.colorAccent;
             }
 
             @Override

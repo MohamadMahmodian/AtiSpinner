@@ -1,7 +1,6 @@
 package com.example.ati_spinner_mohamad;
 
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 //import android.support.constraint.ConstraintLayout;
 import android.view.LayoutInflater;
@@ -24,10 +23,10 @@ public class Adapter_SmartSpiner extends ArrayAdapter<Model_SmartSpiner>
 
     java.util.List<Model_SmartSpiner> List;
     java.util.List<Model_SmartSpiner> List_Copy;
-    boolean MultiSelect,ShowCheckBox,RowNumber;
+    boolean MultiSelect,ShowCheckBox,RowNumber,ShowExtra;
     int Item_Back,CheckBoxColors;
 
-    public Adapter_SmartSpiner(Context context, int textViewResourceId, java.util.List<Model_SmartSpiner> list, Boolean showCheckBox, Boolean Multiselect,Boolean rowNumber,int item_BackgroundColors,int checkBoxColors) {
+    public Adapter_SmartSpiner(Context context, int textViewResourceId, java.util.List<Model_SmartSpiner> list, Boolean showCheckBox, Boolean Multiselect,Boolean rowNumber,Boolean showExtra,int item_BackgroundColors,int checkBoxColors) {
         super(context, textViewResourceId, list);
         this.List = list;
         this.List_Copy = this.List;
@@ -36,6 +35,7 @@ public class Adapter_SmartSpiner extends ArrayAdapter<Model_SmartSpiner>
 
         Item_Back = item_BackgroundColors;
         RowNumber = rowNumber;
+        ShowExtra = showExtra;
     }
 
 
@@ -63,6 +63,9 @@ public class Adapter_SmartSpiner extends ArrayAdapter<Model_SmartSpiner>
 
 
         txtOptions.setText(List.get(position).Name);
+
+
+        //<editor-fold desc="Handel checkBox">
         checkBox.setChecked(List.get(position).Checked);
 
         checkBox.setTag(position);
@@ -71,38 +74,36 @@ public class Adapter_SmartSpiner extends ArrayAdapter<Model_SmartSpiner>
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
                 int Position = Integer.parseInt(((CheckBox) buttonView).getTag().toString());
-                aa(List.get(Position).Id);
+                HandelCheked_CheckBox(List.get(Position).Id);
                 notifyDataSetChanged();
 
             }
         });
 
-        if(!List.get(position).Extra.equals("")) {
-            txt_responseOptions_extra.setText(List.get(position).Extra);
+        if(!ShowCheckBox)
+            checkBox.setVisibility(View.GONE);
+        //</editor-fold>
+
+        //<editor-fold desc="Handel Extra">
+        if(ShowExtra) {
+            if (!List.get(position).Extra.equals("")) {
+                txt_responseOptions_extra.setText(List.get(position).Extra);
+            } else {
+                txt_responseOptions_extra.setVisibility(View.GONE);
+            }
         }else {
             txt_responseOptions_extra.setVisibility(View.GONE);
         }
+        //</editor-fold>
 
-        if(!ShowCheckBox)
-            checkBox.setVisibility(View.GONE);
-
+        //<editor-fold desc="Handel RowNumber">
         if(RowNumber) {
             txt_rownumber.setText(String.valueOf(position));
             card_rownumber.setCardBackgroundColor(getContext().getResources().getColor(Item_Back,null));
         }else {
             card_rownumber.setVisibility(View.GONE);
         }
-//        cons_checkBox.setTag(position);
-//        cons_checkBox.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                int Position = Integer.parseInt(((ConstraintLayout) v).getTag().toString());
-//                aa(Position);
-//                notifyDataSetChanged();
-//
-//            }
-//        });
+        //</editor-fold>
 
         return v;
     }
@@ -138,8 +139,7 @@ public class Adapter_SmartSpiner extends ArrayAdapter<Model_SmartSpiner>
         return filter;
     }
 
-
-    public void aa(String id){
+    public void HandelCheked_CheckBox(String id){
         if (!MultiSelect) {
             for (int i = 0; i < List_Copy.size(); i++) {
                 List_Copy.get(i).Checked = false;

@@ -1,12 +1,10 @@
 package com.example.ati_spinner_mohamad;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.speech.RecognizerIntent;
@@ -47,24 +45,26 @@ public abstract class SmartSpiner implements View.OnClickListener, AdapterView.O
     CardView cardView2,cardView4;
     TextView cons_ok,cons_cancel;
 
-    public ListView List_View;
+    private ListView List_View;
     public Dialog myDialog;
     public String setTitle = "";
     public String setDescription = "";
-    public boolean isCheckBox;
-    public boolean isButton;
-    public boolean MultiSelect;
-    public boolean RowNumber;
 
-    public int BorderColors = R.color.toolbar_newUI;
-    public int ToolbarColors = R.color.toolbar_newUI;
-    public int ItemColors = R.color.toolbar_newUI;
-    public int CheckBoxColors = R.color.toolbar_newUI;
+    private boolean isCheckBox;
+    private boolean isButton;
+    private boolean MultiSelect;
+    private boolean RowNumber;
+    private boolean ShowExtra;
+
+    public int setBorderColors = R.color.toolbar_newUI;
+    public int setToolbarColors = R.color.toolbar_newUI;
+    public int setItemBorderColors = R.color.toolbar_newUI;
+    public int setCheckBoxColors = R.color.toolbar_newUI;
 
 
     public java.util.List<Model_SmartSpiner> ListSelected = new ArrayList<>();
 
-    public SmartSpiner(Activity activity, java.util.List<Model_SmartSpiner> list, Boolean CheckBox, boolean Multiselect,Boolean rowNumber, Boolean Button) {
+    public SmartSpiner(Activity activity, java.util.List<Model_SmartSpiner> list, Boolean CheckBox, boolean Multiselect,Boolean rowNumber,Boolean showExtra, Boolean Button) {
 
         myActivity = activity;
         myContext = myActivity.getApplicationContext();
@@ -76,6 +76,7 @@ public abstract class SmartSpiner implements View.OnClickListener, AdapterView.O
         isButton = Button;
         MultiSelect = Multiselect;
         RowNumber = rowNumber;
+        ShowExtra = showExtra;
 
         myDialog = new Dialog(myActivity);
         myDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -103,13 +104,13 @@ public abstract class SmartSpiner implements View.OnClickListener, AdapterView.O
         if(!isButton)
             cardView4.setVisibility(View.GONE);
 
-        //<editor-fold desc="Ser Colors">
-        ((CardView) myDialog.findViewById(R.id.border)).setCardBackgroundColor(myActivity.getResources().getColor(BorderColors,null));
-        ((ConstraintLayout) myDialog.findViewById(R.id.toolbar)).setBackgroundColor(myActivity.getResources().getColor(ToolbarColors,null));
-        ((ConstraintLayout) myDialog.findViewById(R.id.search_panel_back)).setBackgroundColor(myActivity.getResources().getColor(ToolbarColors,null));
+        //<editor-fold desc="Set Colors">
+        ((CardView) myDialog.findViewById(R.id.border)).setCardBackgroundColor(myActivity.getResources().getColor(setBorderColors,null));
+        ((ConstraintLayout) myDialog.findViewById(R.id.toolbar)).setBackgroundColor(myActivity.getResources().getColor(setToolbarColors,null));
+        ((ConstraintLayout) myDialog.findViewById(R.id.search_panel_back)).setBackgroundColor(myActivity.getResources().getColor(setToolbarColors,null));
         //</editor-fold>
 
-        Adapter = new Adapter_SmartSpiner(myContext, R.layout.listdilaogtempalte_item, List,isCheckBox,MultiSelect,RowNumber,ItemColors,CheckBoxColors);
+        Adapter = new Adapter_SmartSpiner(myContext, R.layout.listdilaogtempalte_item, List,isCheckBox,MultiSelect,RowNumber,ShowExtra, setItemBorderColors, setCheckBoxColors);
         List_View.setAdapter(Adapter);
         List_View.setOnItemClickListener(this);
 
@@ -136,7 +137,7 @@ public abstract class SmartSpiner implements View.OnClickListener, AdapterView.O
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Adapter.aa(Adapter.List.get(position).Id);
+        Adapter.HandelCheked_CheckBox(Adapter.List.get(position).Id);
         Adapter.notifyDataSetChanged();
 
 
