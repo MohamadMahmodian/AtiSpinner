@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
-import android.os.Handler;
 import android.speech.RecognizerIntent;
 import android.support.annotation.RequiresApi;
 import android.support.constraint.ConstraintLayout;
@@ -17,8 +16,6 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.view.Window;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -113,7 +110,7 @@ public abstract class SmartSpiner implements View.OnClickListener, AdapterView.O
         //<editor-fold desc="Set Colors">
         ((CardView) myDialog.findViewById(R.id.border)).setCardBackgroundColor(myActivity.getResources().getColor(setBorderColors,null));
         ((ConstraintLayout) myDialog.findViewById(R.id.toolbar)).setBackgroundColor(myActivity.getResources().getColor(setToolbarColors,null));
-        ((ConstraintLayout) myDialog.findViewById(R.id.search_panel_back)).setBackgroundColor(myActivity.getResources().getColor(setToolbarColors,null));
+        ((ConstraintLayout) myDialog.findViewById(R.id._search_panel_back)).setBackgroundColor(myActivity.getResources().getColor(setToolbarColors,null));
         //</editor-fold>
 
 
@@ -187,10 +184,10 @@ public abstract class SmartSpiner implements View.OnClickListener, AdapterView.O
         toolbar = (ConstraintLayout)  myDialog.findViewById(R.id.toolbar);
         imgSearch = (ConstraintLayout) myDialog.findViewById(R.id.img_search);
         consSearch = (ConstraintLayout) myDialog.findViewById(R.id.includeSearch);
-        consBack = (ConstraintLayout) myDialog.findViewById(R.id.cons_back);
-        editSearch = (EditText) myDialog.findViewById(R.id.editSearch);
-        imgClearSearch = (ImageView) myDialog.findViewById(R.id.imgClearEditSearch);
-        img_voiceSearch = (ImageView) myDialog.findViewById(R.id.img_voiceSearch);
+        consBack = (ConstraintLayout) myDialog.findViewById(R.id._cons_back);
+        editSearch = (EditText) myDialog.findViewById(R.id._editSearch);
+        imgClearSearch = (ImageView) myDialog.findViewById(R.id._imgClearEditSearch);
+        img_voiceSearch = (ImageView) myDialog.findViewById(R.id._img_voiceSearch);
         toolbar_back = (ConstraintLayout) myDialog.findViewById(R.id.toolbar_back);
     }
 
