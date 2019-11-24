@@ -4,6 +4,9 @@ package com.example.ati_spinner_mohamad;
 import android.content.Context;
 //import android.support.constraint.ConstraintLayout;
 import android.os.Build;
+import android.support.annotation.RequiresApi;
+import android.support.constraint.ConstraintLayout;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,9 +16,6 @@ import android.widget.CompoundButton;
 import android.widget.Filter;
 import android.widget.TextView;
 
-import androidx.annotation.RequiresApi;
-import androidx.cardview.widget.CardView;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 import java.util.ArrayList;
 
