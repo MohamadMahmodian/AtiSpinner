@@ -7,11 +7,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Handler;
 import android.speech.RecognizerIntent;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.view.Window;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -110,9 +113,16 @@ public abstract class SmartSpiner implements View.OnClickListener, AdapterView.O
         ((ConstraintLayout) myDialog.findViewById(R.id.search_panel_back)).setBackgroundColor(myActivity.getResources().getColor(setToolbarColors,null));
         //</editor-fold>
 
+
+
+
         Adapter = new Adapter_SmartSpiner(myContext, R.layout.listdilaogtempalte_item, List,isCheckBox,MultiSelect,RowNumber,ShowExtra, setItemBorderColors, setCheckBoxColors);
         List_View.setAdapter(Adapter);
         List_View.setOnItemClickListener(this);
+
+        //Animation anim = AnimationUtils.loadAnimation(myContext, R.anim.aaa);
+        //anim.setDuration(1500);
+        //List_View.setAnimation(anim);
 
         cons_ok.setTag("OK");
         cons_ok.setOnClickListener(this);

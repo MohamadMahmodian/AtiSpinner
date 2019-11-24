@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
         List<Model_SmartSpiner> List = new ArrayList<>();
         List.add(new Model_SmartSpiner("11", "محمد محمودیان", "برنامه نویس",false));
-        List.add(new Model_SmartSpiner("22", "حسن شصتی", "برنامه نویس PHP",false));
+        List.add(new Model_SmartSpiner("aaa", "حسن شصتی", "برنامه نویس PHP",false));
         List.add(new Model_SmartSpiner("33", "سید محمد حسینی", "شبکه CCNA",false));
         List.add(new Model_SmartSpiner("44", "حسین معافی", "برنامه نویس PHP Java",false));
         List.add(new Model_SmartSpiner("55", "امین تاجیک", "برنامه نویس PHP JavaScript",false));
@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
                 super.onCreateing();
                 this.setTitle = "گزینه هارا انتخاب کنید";
                 this.setDescription = "توضیحاتی در باره گزینه ها";
+
 
                 //this.setCheckBoxColors = R.color.colorAccent;
                 //this.setToolbarColors = R.color.colorAccent;
