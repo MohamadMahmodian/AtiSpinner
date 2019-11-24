@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         List.add(new Model_SmartSpiner("77", "علی فرهادی", "",false));
         List.add(new Model_SmartSpiner("88", "رضا نادری", "طراح",false));
 
-        new SmartSpiner(MainActivity.this, List, true, false,true,true, true) {
+        new SmartSpiner(MainActivity.this, List, false, false,false,false, false) {
 
             @Override
             public void onCreateing() {
