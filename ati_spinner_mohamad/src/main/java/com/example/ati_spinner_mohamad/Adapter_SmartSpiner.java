@@ -3,6 +3,7 @@ package com.example.ati_spinner_mohamad;
 
 import android.content.Context;
 //import android.support.constraint.ConstraintLayout;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import android.widget.CompoundButton;
 import android.widget.Filter;
 import android.widget.TextView;
 
+import androidx.annotation.RequiresApi;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
@@ -45,6 +47,7 @@ public class Adapter_SmartSpiner extends ArrayAdapter<Model_SmartSpiner>
     }
 
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
