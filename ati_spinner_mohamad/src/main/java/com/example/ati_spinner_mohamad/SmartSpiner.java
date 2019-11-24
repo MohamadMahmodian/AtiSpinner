@@ -99,8 +99,8 @@ public abstract class SmartSpiner implements View.OnClickListener, AdapterView.O
 
         myDialog.show();
 
-        ((TextView) myDialog.findViewById(R.id.toolbar_title)).setText(setTitle);
-        ((TextView) myDialog.findViewById(R.id.txt_desk)).setText(setDescription);
+        ((TextView) myDialog.findViewById(R.id._toolbar_title)).setText(setTitle);
+        ((TextView) myDialog.findViewById(R.id._txt_desk)).setText(setDescription);
         if(setDescription.equals(""))
             cardView2.setVisibility(View.GONE);
 
@@ -178,8 +178,8 @@ public abstract class SmartSpiner implements View.OnClickListener, AdapterView.O
         cardView2 = (CardView) myDialog.findViewById(R.id.cardView2);
         cardView4 = (CardView) myDialog.findViewById(R.id.cardView4);
         List_View = (ListView) myDialog.findViewById(R.id.list_item);
-        cons_ok = (TextView) myDialog.findViewById(R.id.btn_ok);
-        cons_cancel = (TextView) myDialog.findViewById(R.id.btn_cancel);
+        cons_ok = (TextView) myDialog.findViewById(R.id._btn_ok);
+        cons_cancel = (TextView) myDialog.findViewById(R.id._btn_cancel);
 
         toolbar = (ConstraintLayout)  myDialog.findViewById(R.id.toolbar);
         imgSearch = (ConstraintLayout) myDialog.findViewById(R.id.img_search);
