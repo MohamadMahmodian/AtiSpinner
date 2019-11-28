@@ -8,9 +8,12 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
+import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.support.annotation.RequiresApi;
 import android.support.constraint.ConstraintLayout;
+import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -27,14 +30,17 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public abstract class SmartSpiner implements View.OnClickListener, AdapterView.OnItemClickListener {
+import static android.app.Activity.RESULT_OK;
+
+public class SmartSpiner implements View.OnClickListener, AdapterView.OnItemClickListener {
+
 
     private Activity myActivity;
     private Context myContext;
     private java.util.List<Model_SmartSpiner> List;
 
     private Adapter_SmartSpiner Adapter;
-    private int REQ_CODE_SPEECH_INPUT = 100;
+    //public int REQ_CODE_SPEECH_INPUT = 100;
     private ImageView img_voiceSearch;
     private ConstraintLayout consSearch;
     private ConstraintLayout consBack;
@@ -80,6 +86,13 @@ public abstract class SmartSpiner implements View.OnClickListener, AdapterView.O
         RowNumber = rowNumber;
         ShowExtra = showExtra;
 
+
+
+
+        onCreateing();
+    }
+
+    public void onCreateing(){
         myDialog = new Dialog(myActivity);
         myDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         myDialog.setCancelable(true);
@@ -87,11 +100,7 @@ public abstract class SmartSpiner implements View.OnClickListener, AdapterView.O
         myDialog.setContentView(R.layout.listdialogtemplate);
 
         finds();
-
-        onCreateing();
     }
-
-    public void onCreateing(){}
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     public void ShowDialog() {
@@ -133,11 +142,7 @@ public abstract class SmartSpiner implements View.OnClickListener, AdapterView.O
         toolbar_back.setTag("ToolbarBack");
         toolbar_back.setOnClickListener(this);
 
-
-
-
         handleSearch();
-
     }
 
     @Override
@@ -159,6 +164,22 @@ public abstract class SmartSpiner implements View.OnClickListener, AdapterView.O
         }
     }
 
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        switch (requestCode) {
+            case 10086: {
+                if (resultCode == RESULT_OK && null != data) {
+
+                    ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+                    String hasan = result.get(0);
+                    editSearch.setText(ConverPersian2English(hasan));
+                    Adapter.getFilter().filter(editSearch.getText().toString());
+                }
+                break;
+            }
+        }
+    }
+
     private void promptSpeechInput() {
         Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
@@ -167,11 +188,12 @@ public abstract class SmartSpiner implements View.OnClickListener, AdapterView.O
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "fa-IR");
         intent.putExtra(RecognizerIntent.EXTRA_PROMPT,"لطفا صحبت کنید");
         try {
-            myActivity.startActivityForResult(intent, REQ_CODE_SPEECH_INPUT);
+            myActivity.startActivityForResult(intent, 10086);
         } catch (ActivityNotFoundException a) {
             Toast.makeText(myContext,"گوشی شما از این امکان پشتیبانی نمی کند", Toast.LENGTH_SHORT).show();
         }
     }
+
 
     private void finds() {
 
@@ -243,7 +265,6 @@ public abstract class SmartSpiner implements View.OnClickListener, AdapterView.O
             }
         });
     }
-
 
     public String ConverPersian2English(String number){
         char[] chars = new char[number.length()];

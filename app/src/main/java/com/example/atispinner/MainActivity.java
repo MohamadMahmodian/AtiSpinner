@@ -1,7 +1,10 @@
 package com.example.atispinner;
 
 
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -16,6 +19,9 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    SmartSpiner smartSpiner;
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         List.add(new Model_SmartSpiner("77", "علی فرهادی", "",false));
         List.add(new Model_SmartSpiner("88", "رضا نادری", "طراح",false));
 
-        new SmartSpiner(MainActivity.this, List, false, false,false,false, false) {
+        smartSpiner = new SmartSpiner(MainActivity.this, List, true, false,false,true, true) {
 
             @Override
             public void onCreateing() {
@@ -74,8 +80,15 @@ public class MainActivity extends AppCompatActivity {
                 int x = this.ListSelected.size();
             }
 
-        }.ShowDialog();
+        };
+        smartSpiner.ShowDialog();
 
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        smartSpiner.onActivityResult(requestCode,resultCode,data);
     }
 }
