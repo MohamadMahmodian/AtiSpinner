@@ -47,7 +47,7 @@ public class Adapter_SmartSpiner extends ArrayAdapter<Model_SmartSpiner>
     }
 
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
@@ -62,7 +62,11 @@ public class Adapter_SmartSpiner extends ArrayAdapter<Model_SmartSpiner>
         TextView txt_rownumber = (TextView) v.findViewById(R.id.txt_rownumber);
         CardView card_rownumber = (CardView) v.findViewById(R.id.card_rownumber);
 
-        ((CardView) v.findViewById(R.id.card_item)).setCardBackgroundColor(getContext().getResources().getColor(Item_Back,null));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            ((CardView) v.findViewById(R.id.card_item)).setCardBackgroundColor(getContext().getResources().getColor(Item_Back,null));
+        }else {
+            ((CardView) v.findViewById(R.id.card_item)).setCardBackgroundColor(Item_Back);
+        }
 
 
         txtOptions.setText(List.get(position).Name);
@@ -102,7 +106,11 @@ public class Adapter_SmartSpiner extends ArrayAdapter<Model_SmartSpiner>
         //<editor-fold desc="Handel RowNumber">
         if(RowNumber) {
             txt_rownumber.setText(String.valueOf(position));
-            card_rownumber.setCardBackgroundColor(getContext().getResources().getColor(Item_Back,null));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                card_rownumber.setCardBackgroundColor(getContext().getResources().getColor(Item_Back,null));
+            }else {
+                card_rownumber.setCardBackgroundColor(Item_Back);
+            }
         }else {
             card_rownumber.setVisibility(View.GONE);
         }

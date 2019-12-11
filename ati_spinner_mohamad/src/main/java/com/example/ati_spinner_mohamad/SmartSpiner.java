@@ -1,5 +1,7 @@
 package com.example.ati_spinner_mohamad;
 
+import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.ActivityNotFoundException;
@@ -102,7 +104,10 @@ public class SmartSpiner implements View.OnClickListener, AdapterView.OnItemClic
         finds();
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
+
+
+
+    @SuppressLint("ResourceAsColor")
     public void ShowDialog() {
 
 
@@ -117,9 +122,15 @@ public class SmartSpiner implements View.OnClickListener, AdapterView.OnItemClic
             cardView4.setVisibility(View.GONE);
 
         //<editor-fold desc="Set Colors">
-        ((CardView) myDialog.findViewById(R.id.border)).setCardBackgroundColor(myActivity.getResources().getColor(setBorderColors,null));
-        ((ConstraintLayout) myDialog.findViewById(R.id.toolbar)).setBackgroundColor(myActivity.getResources().getColor(setToolbarColors,null));
-        ((ConstraintLayout) myDialog.findViewById(R.id._search_panel_back)).setBackgroundColor(myActivity.getResources().getColor(setToolbarColors,null));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            ((CardView) myDialog.findViewById(R.id.border)).setCardBackgroundColor(myActivity.getResources().getColor(setBorderColors, null));
+            ((ConstraintLayout) myDialog.findViewById(R.id.toolbar)).setBackgroundColor(myActivity.getResources().getColor(setToolbarColors, null));
+            ((ConstraintLayout) myDialog.findViewById(R.id._search_panel_back)).setBackgroundColor(myActivity.getResources().getColor(setToolbarColors, null));
+        }else {
+            ((CardView) myDialog.findViewById(R.id.border)).setCardBackgroundColor(setBorderColors);
+            ((ConstraintLayout) myDialog.findViewById(R.id.toolbar)).setBackgroundColor(setToolbarColors);
+            ((ConstraintLayout) myDialog.findViewById(R.id._search_panel_back)).setBackgroundColor(setToolbarColors);
+        }
         //</editor-fold>
 
 
