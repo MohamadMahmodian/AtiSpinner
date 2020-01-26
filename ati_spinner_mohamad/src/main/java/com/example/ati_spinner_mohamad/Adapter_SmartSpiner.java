@@ -4,7 +4,6 @@ package com.example.ati_spinner_mohamad;
 import android.content.Context;
 //import android.support.constraint.ConstraintLayout;
 import android.os.Build;
-import android.support.annotation.RequiresApi;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
@@ -25,10 +24,10 @@ public class Adapter_SmartSpiner extends ArrayAdapter<Model_SmartSpiner>
 
     java.util.List<Model_SmartSpiner> List;
     java.util.List<Model_SmartSpiner> List_Copy;
-    boolean MultiSelect,ShowCheckBox,RowNumber,ShowExtra;
+    boolean MultiSelect,ShowCheckBox,RowNumber, ShowComment;
     int Item_Back,CheckBoxColors;
 
-    public Adapter_SmartSpiner(Context context, int textViewResourceId, java.util.List<Model_SmartSpiner> list, Boolean showCheckBox, Boolean Multiselect,Boolean rowNumber,Boolean showExtra,int item_BackgroundColors,int checkBoxColors) {
+    public Adapter_SmartSpiner(Context context, int textViewResourceId, java.util.List<Model_SmartSpiner> list, Boolean showCheckBox, Boolean Multiselect,Boolean rowNumber,Boolean showComment,int item_BackgroundColors,int checkBoxColors) {
         super(context, textViewResourceId, list);
         this.List = list;
         this.List_Copy = this.List;
@@ -37,7 +36,7 @@ public class Adapter_SmartSpiner extends ArrayAdapter<Model_SmartSpiner>
 
         Item_Back = item_BackgroundColors;
         RowNumber = rowNumber;
-        ShowExtra = showExtra;
+        ShowComment = showComment;
     }
 
 
@@ -91,10 +90,10 @@ public class Adapter_SmartSpiner extends ArrayAdapter<Model_SmartSpiner>
             checkBox.setVisibility(View.GONE);
         //</editor-fold>
 
-        //<editor-fold desc="Handel Extra">
-        if(ShowExtra) {
-            if (!List.get(position).Extra.equals("")) {
-                txt_responseOptions_extra.setText(List.get(position).Extra);
+        //<editor-fold desc="Handel Commernt">
+        if(ShowComment) {
+            if (!List.get(position).Commernt.equals("")) {
+                txt_responseOptions_extra.setText(List.get(position).Commernt);
             } else {
                 txt_responseOptions_extra.setVisibility(View.GONE);
             }

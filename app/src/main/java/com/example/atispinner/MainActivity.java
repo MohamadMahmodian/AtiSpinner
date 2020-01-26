@@ -27,16 +27,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Object s = "dd";
 
         List<Model_SmartSpiner> List = new ArrayList<>();
-        List.add(new Model_SmartSpiner("11", "محمد محمودیان", "برنامه نویس",false));
-        List.add(new Model_SmartSpiner("aaa", "حسن شصتی", "برنامه نویس PHP",false));
-        List.add(new Model_SmartSpiner("33", "سید محمد حسینی", "شبکه CCNA",false));
-        List.add(new Model_SmartSpiner("44", "حسین معافی", "برنامه نویس PHP Java",false));
-        List.add(new Model_SmartSpiner("55", "امین تاجیک", "برنامه نویس PHP JavaScript",false));
-        List.add(new Model_SmartSpiner("66", "حمید حیدری", "",false));
-        List.add(new Model_SmartSpiner("77", "علی فرهادی", "",false));
-        List.add(new Model_SmartSpiner("88", "رضا نادری", "طراح",false));
+        List.add(new Model_SmartSpiner("11", "محمد محمودیان", "برنامه نویس",s,false));
+        List.add(new Model_SmartSpiner("aaa", "حسن شصتی", "برنامه نویس PHP",s,false));
+        List.add(new Model_SmartSpiner("33", "سید محمد حسینی", "شبکه CCNA",s,false));
+        List.add(new Model_SmartSpiner("44", "حسین معافی", "برنامه نویس PHP Java",s,false));
+        List.add(new Model_SmartSpiner("55", "امین تاجیک", "برنامه نویس PHP JavaScript",s,false));
+        List.add(new Model_SmartSpiner("66", "حمید حیدری", "",s,false));
+        List.add(new Model_SmartSpiner("77", "علی فرهادی", "",s,false));
+        List.add(new Model_SmartSpiner("88", "رضا نادری", "طراح",s,false));
 
         smartSpiner = new SmartSpiner(MainActivity.this, List, true, false,false,true, true) {
 

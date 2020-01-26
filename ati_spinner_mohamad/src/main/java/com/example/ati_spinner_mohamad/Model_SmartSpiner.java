@@ -4,16 +4,26 @@ public class Model_SmartSpiner {
 
     String Id;
     String Name;
-    String Extra;
+    String Commernt;
+    Object Extra;
     Boolean Checked = false;
 
 
 
-    public Model_SmartSpiner(String id, String name , String extra, Boolean checked) {
+    public Model_SmartSpiner(String id, String name , String comment,Object extra, Boolean checked) {
         Id = id;
         Name = name;
+        Commernt = comment;
         Extra = extra;
         Checked = checked;
+    }
+
+    public Object getExtra() {
+        return Extra;
+    }
+
+    public void setExtra(Object extra) {
+        Extra = extra;
     }
 
     public Boolean getChecked() {
@@ -40,11 +50,11 @@ public class Model_SmartSpiner {
         Name = name;
     }
 
-    public String getExtra() {
-        return Extra;
+    public String getCommernt() {
+        return Commernt;
     }
 
-    public void setExtra(String extra) {
-        Extra = extra;
+    public void setCommernt(String commernt) {
+        Commernt = commernt;
     }
 }
