@@ -46,11 +46,12 @@ public class SmartSpiner implements View.OnClickListener, AdapterView.OnItemClic
     private ImageView img_voiceSearch;
     private ConstraintLayout consSearch;
     private ConstraintLayout consBack;
-    private ConstraintLayout imgSearch;
+    public ConstraintLayout imgSearch;
     private ImageView imgClearSearch;
     private ConstraintLayout toolbar;
     private EditText editSearch;
-    private ConstraintLayout toolbar_back;
+    public ConstraintLayout toolbar_back;
+    public ConstraintLayout Btn_Add;
 
     CardView cardView2,cardView4;
     TextView cons_ok,cons_cancel;
@@ -153,6 +154,9 @@ public class SmartSpiner implements View.OnClickListener, AdapterView.OnItemClic
         toolbar_back.setTag("ToolbarBack");
         toolbar_back.setOnClickListener(this);
 
+        Btn_Add.setTag("Btn_Add");
+        Btn_Add.setOnClickListener(this);
+
         handleSearch();
     }
 
@@ -222,6 +226,7 @@ public class SmartSpiner implements View.OnClickListener, AdapterView.OnItemClic
         imgClearSearch = (ImageView) myDialog.findViewById(R.id._imgClearEditSearch);
         img_voiceSearch = (ImageView) myDialog.findViewById(R.id._img_voiceSearch);
         toolbar_back = (ConstraintLayout) myDialog.findViewById(R.id.toolbar_back);
+        Btn_Add = (ConstraintLayout) myDialog.findViewById(R.id.img_add);
     }
 
     private void handleSearch() {

@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
                 this.setTitle = "گزینه هارا انتخاب کنید";
                 this.setDescription = "توضیحاتی در باره گزینه ها";
 
+                //this.Btn_Add.setVisibility(View.GONE);
 
                 //this.setCheckBoxColors = R.color.colorAccent;
                 //this.setToolbarColors = R.color.colorAccent;
@@ -71,6 +72,10 @@ public class MainActivity extends AppCompatActivity {
 
                     case "ToolbarBack":
                         Toast.makeText(v.getContext(), "ToolbarBack", Toast.LENGTH_SHORT).show();
+                        break;
+
+                    case "Btn_Add":
+                        Toast.makeText(v.getContext(), "Btn_Add", Toast.LENGTH_SHORT).show();
                         break;
                 }
             }
